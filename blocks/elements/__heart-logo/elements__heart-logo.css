@@ -1,0 +1,17 @@
+.elements__heart-logo {
+  margin: 25px 20px 30px auto;
+  background-image: url(../../../images/heart-logo.svg);
+  width: 22px;
+  height: 19px;
+  background-color: transparent;
+  border: none;
+}
+
+.elements__heart-logo:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.elements__heart-logo:active {
+  background-image: url(../../../images/black-heart-logo.svg);
+}

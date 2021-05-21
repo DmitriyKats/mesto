@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="pages/index.css">
+  </head>
+  <body class="page">
+    
+    <div class="page__container">
+      
+      <header class="header">
+        <div class="logo"></div>
+      </header>
+      
+      <main class="content page__content">
+        <section class="profile">
+          <div class="profile__information">
+            <img class="profile__avatar" src="images/avatar.jpg" alt="здесь должна быть аватарка">
+            <div class="profile__description">
+              <div class="profile__edit-information">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button class="profile__edit-button" type="button" aria-label="редактировать профиль"></button>
+              </div>
+              <p class="profile__subtitle">Исследователь океана</p>
+            </div>
+          </div>
+          <div class="profile__add-button" type="button" aria-label="добавить"></div>
+        </section>
+        
+        <section class="elements page__elements">
+          
+          <article class="elements__element">
+            <img class="elements__image" src="images/Florence.jpg" alt="Собор Санта-Мария-дель-Фьори">
+            <div class="elements__container">
+              <h2 class="elements__title">Флоренция</h2>
+              <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
+            </div>
+          </article>
+          
+          <article class="elements__element">
+            <img class="elements__image" src="images/Venice.jpg" alt="Собор Святого Марка">
+            <div class="elements__container">
+              <h2 class="elements__title">Венеция</h2>
+              <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
+            </div>
+          </article>
+          
+          <article class="elements__element">
+            <img class="elements__image" src="images/Rome.jpg" alt="Колизей">
+            <div class="elements__container">
+              <h2 class="elements__title">Рим</h2>
+              <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
+            </div>
+          </article>
+          
+          <article class="elements__element">
+            <img class="elements__image" src="images/Turkey.jpg" alt="Собор Святой Софии">
+            <div class="elements__container">
+              <h2 class="elements__title">Стамбул</h2>
+              <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
+            </div>
+          </article>
+          
+          <article class="elements__element">
+            <img class="elements__image" src="images/Paris.jpg" alt="Собор Парижской Богоматери">
+            <div class="elements__container">
+              <h2 class="elements__title">Париж</h2>
+              <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
+            </div>
+          </article>
+          
+          <article class="elements__element">
+            <img class="elements__image" src="images/London.jpg" alt="Вестминстерский дворец, Биг-Бен">
+            <div class="elements__container">
+              <h2 class="elements__title">Лондон</h2>
+              <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
+            </div>
+          </article>
+        </section>
+      </main>
+      
+      <footer class="footer">
+        <p class="footer__information">2020 Mesto Russia</p>
+      </footer>
+      
+      <section class="popup">
+        <div class="popup__container">
+          <button class="popup__close-button" type="button" aria-label="закрыть всплывающее окно"></button>
+          <h2 class="popup__title">Редактировать&nbsp;профиль</h2>
+          <form class="popup__form-container">
+            <fieldset class="popup__fieldset">
+              <label class="popup__fieldform">
+                <input class="popup__input popup__input_edit_name" name="name" value="Жак-Ив Кусто">
+              </label>
+              <label class="popup__fieldform">
+                <input class="popup__input popup__input_edit_description" name="description" value="Исследователь океана">
+              </label>
+            </fieldset>
+            <button class="popup__submit-button" type="submit" aria-label="сохранить введённые данные"></button>
+          </form>
+        </div>
+      </section>
+    </div>
+    
+    <script src="scripts/main.js"></script>
+  
+  </body>
+</html>

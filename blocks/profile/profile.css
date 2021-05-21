@@ -1,0 +1,14 @@
+.profile {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+@media (max-width: 879px) {
+  .profile {
+    flex-direction: column;
+   }
+}
+

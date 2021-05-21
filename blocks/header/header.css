@@ -1,0 +1,12 @@
+.header {
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, sans-serif;
+  border-bottom: 1px solid #545454;
+  min-height: 74px;
+}
+
+@media (max-width: 879px) {
+  .header {
+    padding: 0 27px;
+  }
+}

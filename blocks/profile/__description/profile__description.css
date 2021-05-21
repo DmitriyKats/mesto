@@ -1,0 +1,12 @@
+.profile__description {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+@media (max-width: 879px) {
+  .profile__description {
+    align-items: center;
+    margin: 25px 0 35px 0;
+  }
+}
