@@ -13,7 +13,7 @@
 @media (max-width: 425px) {
   .popup__submit-button {
     background-image: url(../../../images/submit-button_s.svg);
-    width: 258px;
+    max-width: 238px;
     
   }
 }
