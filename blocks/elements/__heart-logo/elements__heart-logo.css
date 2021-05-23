@@ -5,6 +5,7 @@
   height: 19px;
   background-color: transparent;
   border: none;
+  transition: opacity ease 1s;
 }
 
 .elements__heart-logo:hover {

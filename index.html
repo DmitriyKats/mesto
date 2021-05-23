@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesto</title>
+    <title>Место</title>
     <link rel="stylesheet" href="pages/index.css">
   </head>
   <body class="page">
@@ -15,7 +15,7 @@
         <div class="logo"></div>
       </header>
       
-      <main class="content page__content">
+      <main class="content">
         <section class="profile">
           <div class="profile__information">
             <img class="profile__avatar" src="images/avatar.jpg" alt="здесь должна быть аватарка">
@@ -83,23 +83,19 @@
       </main>
       
       <footer class="footer">
-        <p class="footer__information">2020 Mesto Russia</p>
+        <p class="footer__information">&copy; 2020 Mesto Russia</p>
       </footer>
       
       <section class="popup">
         <div class="popup__container">
           <button class="popup__close-button" type="button" aria-label="закрыть всплывающее окно"></button>
           <h2 class="popup__title">Редактировать&nbsp;профиль</h2>
-          <form class="popup__form-container">
+          <form class="popup__form-container" name="description">
             <fieldset class="popup__fieldset">
-              <label class="popup__fieldform">
-                <input class="popup__input popup__input_edit_name" name="name" value="Жак-Ив Кусто">
-              </label>
-              <label class="popup__fieldform">
-                <input class="popup__input popup__input_edit_description" name="description" value="Исследователь океана">
-              </label>
+              <input class="popup__input popup__input_edit_name" name="name" value="Жак-Ив Кусто">
+              <input class="popup__input popup__input_edit_vocation" name="vocation" value="Исследователь океана">
             </fieldset>
-            <button class="popup__submit-button" type="submit" aria-label="сохранить введённые данные"></button>
+            <button class="popup__submit-button" type="submit" aria-label="сохранить введённые данные">Сохранить</button>
           </form>
         </div>
       </section>

@@ -3,3 +3,9 @@
   font-family: 'Inter', Arial, sans-serif;
   padding: 36px 0 67px; 
 }
+
+@media (max-width: 425px) {
+  .content {
+    padding: 38px 0 48px;
+  }
+}
