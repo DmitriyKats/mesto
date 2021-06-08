@@ -31,17 +31,19 @@
         </section>
         
         <section class="elements">
-          
-          <article class="elements__element">
-            <img class="elements__image" src="images/Florence.jpg" alt="Собор Санта-Мария-дель-Фьори">
-            <div class="elements__container">
-              <h2 class="elements__title">Флоренция</h2>
-              <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
-            </div>
-          </article>
-          
-          <article class="elements__element">
+          <template class = "elements__template">
+            <article class="elements__element">
+              <img class="elements__image" src="#" alt="#">
+              <button class="elements__trash" type="button" aria-label="кнопка удаления"></button>
+              <div class="elements__container">
+                <h2 class="elements__title">Флоренция</h2>
+                <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
+              </div>
+            </article>
+          </template>
+          <!-- <article class="elements__element"> 
             <img class="elements__image" src="images/Venice.jpg" alt="Собор Святого Марка">
+            <button class="elements__trash" type="button" aria-label="кнопка удаления"></button>
             <div class="elements__container">
               <h2 class="elements__title">Венеция</h2>
               <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
@@ -50,6 +52,7 @@
           
           <article class="elements__element">
             <img class="elements__image" src="images/Rome.jpg" alt="Колизей">
+            <button class="elements__trash" type="button" aria-label="кнопка удаления"></button>
             <div class="elements__container">
               <h2 class="elements__title">Рим</h2>
               <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
@@ -58,6 +61,7 @@
           
           <article class="elements__element">
             <img class="elements__image" src="images/Turkey.jpg" alt="Собор Святой Софии">
+            <button class="elements__trash" type="button" aria-label="кнопка удаления"></button>
             <div class="elements__container">
               <h2 class="elements__title">Стамбул</h2>
               <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
@@ -66,6 +70,7 @@
           
           <article class="elements__element">
             <img class="elements__image" src="images/Paris.jpg" alt="Собор Парижской Богоматери">
+            <button class="elements__trash" type="button" aria-label="кнопка удаления"></button>
             <div class="elements__container">
               <h2 class="elements__title">Париж</h2>
               <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
@@ -74,11 +79,12 @@
           
           <article class="elements__element">
             <img class="elements__image" src="images/London.jpg" alt="Вестминстерский дворец, Биг-Бен">
+            <button class="elements__trash" type="button" aria-label="кнопка удаления"></button>
             <div class="elements__container">
               <h2 class="elements__title">Лондон</h2>
               <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
             </div>
-          </article>
+          </article> -->
         </section>
       </main>
       
@@ -86,11 +92,11 @@
         <p class="footer__information">&copy; 2020 Mesto Russia</p>
       </footer>
       
-      <section class="popup">
+      <section class="popup popup_type_profile">
         <div class="popup__container">
           <button class="popup__close-button" type="button" aria-label="закрыть всплывающее окно"></button>
           <h2 class="popup__title">Редактировать&nbsp;профиль</h2>
-          <form class="popup__form-container" name="description">
+          <form class="popup__form-container popup__form-container_edit-description" name="description">
             <fieldset class="popup__fieldset">
               <input class="popup__input popup__input_edit_name" name="name" value="Жак-Ив Кусто">
               <input class="popup__input popup__input_edit_vocation" name="vocation" value="Исследователь океана">
@@ -98,6 +104,28 @@
             <button class="popup__submit-button" type="submit" aria-label="сохранить введённые данные">Сохранить</button>
           </form>
         </div>
+      </section>
+
+      <section class="popup popup_type_add-card">
+        <div class="popup__container">
+          <button class="popup__close-button" type="button" aria-label="закрыть всплывающее окно"></button>
+          <h2 class="popup__title">Новое&nbsp;место</h2>
+          <form class="popup__form-container popup__form-container_add-place" name="sights">
+            <fieldset class="popup__fieldset">
+              <input class="popup__input popup__input_add_place" name="place" placeholder="Название">
+              <input class="popup__input popup__input_add_link" name="link"  placeholder="Ссылка на картинку">
+            </fieldset>
+            <button class="popup__submit-button" type="submit" aria-label="сохранить введённые данные">Сохранить</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="popup popup_type_image">
+        <figure class="popup__image-container">
+          <button class="popup__close-button" type="button" aria-label="закрыть всплывающее окно"></button>
+          <img class="popup__image" src="#" alt="#">
+          <figcaption class = "popup__image-title"></figcaption>
+        </figure>
       </section>
     </div>
     

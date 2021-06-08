@@ -1,0 +1,19 @@
+.popup__image-container {
+ position: relative;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ box-sizing: border-box;
+ max-width: 816px;
+ padding: 0;
+ margin: auto;
+ 
+}
+
+@media (max-width: 425px) {
+ .popup__container {
+   max-width: 240px;
+      
+ }
+}

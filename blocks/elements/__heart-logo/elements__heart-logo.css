@@ -13,6 +13,3 @@
   cursor: pointer;
 }
 
-.elements__heart-logo:active {
-  background-image: url(../../../images/black-heart-logo.svg);
-}
