@@ -45,15 +45,11 @@ const cardElements = document.querySelector('.elements');
 const cardElementTemplate = document.querySelector('.elements__template').content;
 
 function openPopup(popupName) {
-  if (!popupName.classList.contains('popup_opened')) {
-    popupName.classList.add('popup_opened');
-    } 
-  }
+  popupName.classList.add('popup_opened');
+}
 
 function closePopup(popupName) {
-  if (popupName.classList.contains('popup_opened')) {
-    popupName.classList.remove('popup_opened');
-  }
+  popupName.classList.remove('popup_opened');
 }
 
 function handleEditPopup() {
