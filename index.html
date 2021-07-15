@@ -36,7 +36,7 @@
               <img class="elements__image" src="#" alt="#">
               <button class="elements__trash" type="button" aria-label="кнопка удаления"></button>
               <div class="elements__container">
-                <h2 class="elements__title">Флоренция</h2>
+                <h2 class="elements__title"></h2>
                 <button class="elements__heart-logo" type="button" aria-label="кнопка лайка"></button>
               </div>
             </article>
@@ -52,12 +52,18 @@
         <div class="popup__container">
           <button class="popup__close-button" type="button" aria-label="закрыть всплывающее окно"></button>
           <h2 class="popup__title">Редактировать&nbsp;профиль</h2>
-          <form class="popup__form-container popup__form-container_edit-description" name="description">
+          <form class="popup__form-container popup__form-container_edit-description" name="description" novalidate>
             <fieldset class="popup__fieldset">
-              <input class="popup__input popup__input_edit_name" name="name" placeholder="Имя">
-              <input class="popup__input popup__input_edit_vocation" name="vocation" placeholder="Профессия">
+              <label class="popup__label">
+                <input class="popup__input popup__input_edit_name" id="edit-input" name="name" placeholder="Имя" minlength="2" maxlength="40" required>
+                <span class="popup__input-error edit-input-error"></span>
+              </label>
+              <label class="popup__label">
+                <input class="popup__input popup__input_edit_vocation" id="vocation-input" name="vocation" placeholder="Профессия" minlength="2" maxlength="200" required>
+                <span class="popup__input-error vocation-input-error"></span>
+              </label>
             </fieldset>
-            <button class="popup__submit-button" type="submit" aria-label="сохранить введённые данные">Сохранить</button>
+            <button class="popup__submit-button popup__submit-button_disabled" type="submit" aria-label="сохранить введённые данные">Сохранить</button>
           </form>
         </div>
       </section>
@@ -66,12 +72,18 @@
         <div class="popup__container">
           <button class="popup__close-button" type="button" aria-label="закрыть всплывающее окно"></button>
           <h2 class="popup__title">Новое&nbsp;место</h2>
-          <form class="popup__form-container popup__form-container_add-place" name="sights">
+          <form class="popup__form-container popup__form-container_add-place" name="sights" novalidate>
             <fieldset class="popup__fieldset">
-              <input class="popup__input popup__input_add_place" name="place" placeholder="Название">
-              <input class="popup__input popup__input_add_link" name="link"  placeholder="Ссылка на картинку">
+              <label class="popup__label">
+                <input class="popup__input popup__input_add_place" id="add-input" name="place" placeholder="Название" minlength="2" maxlength="30" required>
+                <span class="popup__input-error add-input-error"></span>
+              </label>
+              <label class="popup__label">
+                <input class="popup__input popup__input_add_link" id="url-input" name="link" type="url" placeholder="Ссылка на картинку"  required>
+                <span class="popup__input-error url-input-error"></span>
+              </label>  
             </fieldset>
-            <button class="popup__submit-button" type="submit" aria-label="сохранить введённые данные">Сохранить</button>
+            <button class="popup__submit-button popup__submit-button_disabled" type="submit" aria-label="сохранить введённые данные">Сохранить</button>
           </form>
         </div>
       </section>
@@ -86,6 +98,7 @@
     </div>
     
     <script src="scripts/main.js"></script>
+    <script src="scripts/validate.js"></script>
   
   </body>
 </html>

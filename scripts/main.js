@@ -21,6 +21,8 @@ const nameTitle = document.querySelector('.profile__title');
 const jobTitle = document.querySelector('.profile__subtitle');
 
 const popupModal = document.querySelector('.popup');
+
+
 const popupModalEdit = document.querySelector('.popup_type_profile');
 const popupModalAdd = document.querySelector('.popup_type_add-card');
 const popupModalImage = document.querySelector('.popup_type_image');
@@ -46,14 +48,42 @@ const cardElementTemplate = document.querySelector('.elements__template').conten
 
 function openPopup(popupName) {
   popupName.classList.add('popup_opened');
+  document.addEventListener("keyup", closePopupByClickOnEsc);
 }
 
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
+  document.removeEventListener("keyup", closePopupByClickOnEsc);
 }
 
+function closePopupByClickOnOverlay (event) {
+  if (event.target !== event.currentTarget) {
+    return
+  }
+  
+  closePopup(popupModalAdd);
+  closePopup(popupModalEdit);
+  closePopup(popupModalImage);
+ 
+}
+
+function closePopupByClickOnEsc(event) {
+  if (event.code === 'Escape') {
+      closePopup(popupModalAdd);
+      closePopup(popupModalEdit);
+      closePopup(popupModalImage)
+  }
+}
+
+popupModalEdit.addEventListener('click', closePopupByClickOnOverlay);
+popupModalAdd.addEventListener('click', closePopupByClickOnOverlay);
+popupModalImage.addEventListener('click', closePopupByClickOnOverlay);
+
+
 function handleEditPopup() {
+
   openPopup(popupModalEdit);
+
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
 }
@@ -68,26 +98,37 @@ jobTitle.textContent = jobInput.value;
 closePopup(popupModalEdit);
 }
 
+function addCard(container, cardElement, isNewItem) {
+  
+  if (isNewItem) { 
+    container.prepend(cardElement);
+  } else { 
+    container.append(cardElement); 
+  } 
+ }
+
+
 function formSubmitAddCard(evt) {
   
   evt.preventDefault();
   
   const name = placeTitleInput.value; 
   const link = placeLinkInput.value;
+
   addCard(cardElements, createCard({name, link}), true);
   formElementAddPlace.reset();
   closePopup(popupModalAdd);
-
 }
 
- 
-function handleLike(event) {
+
+ function handleLike(event) {
   event.target.classList.toggle('elements__heart-logo_active');
 }
 
 function likeEventListener(element) {
   element.querySelector('.elements__heart-logo').addEventListener('click', handleLike);
 }
+
 
 function handleDelete(event) {
   event.target.closest('.elements__element').remove();
@@ -96,6 +137,7 @@ function handleDelete(event) {
 function deleteEventListener(element) {
   element.querySelector('.elements__trash').addEventListener('click', handleDelete);
 }
+
 
 function createCard({name, link}) {
   const cardElement = cardElementTemplate.cloneNode(true);
@@ -108,25 +150,13 @@ function createCard({name, link}) {
     popupImage.alt = name;
     popupImageText.textContent = name;
     openPopup(popupModalImage);
-    
   });
 
   deleteEventListener(cardElement);
   likeEventListener(cardElement);
 
   return cardElement;
-     
-}
-
-function addCard(container, cardElement, isNewItem) {
-  
-  if (isNewItem) { 
-    container.prepend(cardElement); 
-  } else { 
-    container.append(cardElement); 
-  } 
-  
-}
+  }
 
 editButton.addEventListener('click', handleEditPopup);
 addButton.addEventListener('click', () => openPopup(popupModalAdd));
