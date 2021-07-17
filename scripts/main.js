@@ -1,3 +1,4 @@
+
 const initialCards = [
   { name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'},
@@ -47,13 +48,16 @@ const cardElements = document.querySelector('.elements');
 const cardElementTemplate = document.querySelector('.elements__template').content;
 
 function openPopup(popupName) {
+  
   popupName.classList.add('popup_opened');
   document.addEventListener("keyup", closePopupByClickOnEsc);
+    
 }
 
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
   document.removeEventListener("keyup", closePopupByClickOnEsc);
+  
 }
 
 function closePopupByClickOnOverlay (event) {
@@ -61,23 +65,16 @@ function closePopupByClickOnOverlay (event) {
     return
   }
   
-  closePopup(popupModalAdd);
-  closePopup(popupModalEdit);
-  closePopup(popupModalImage);
- 
+  const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup);
 }
 
 function closePopupByClickOnEsc(event) {
   if (event.code === 'Escape') {
-      closePopup(popupModalAdd);
-      closePopup(popupModalEdit);
-      closePopup(popupModalImage)
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup);
   }
 }
-
-popupModalEdit.addEventListener('click', closePopupByClickOnOverlay);
-popupModalAdd.addEventListener('click', closePopupByClickOnOverlay);
-popupModalImage.addEventListener('click', closePopupByClickOnOverlay);
 
 
 function handleEditPopup() {
@@ -86,6 +83,8 @@ function handleEditPopup() {
 
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
+
+  deleteErrors(formElementDescription, config);
 }
 
 function formSubmitEditHandler(evt) {
@@ -107,6 +106,11 @@ function addCard(container, cardElement, isNewItem) {
   } 
  }
 
+ function blockButton() {
+  let submitButton = document.querySelectorAll('.popup__submit-button')[1]
+  submitButton.setAttribute('disabled', true);
+  submitButton.classList.add('popup__submit-button_disabled');
+}
 
 function formSubmitAddCard(evt) {
   
@@ -117,9 +121,10 @@ function formSubmitAddCard(evt) {
 
   addCard(cardElements, createCard({name, link}), true);
   formElementAddPlace.reset();
+    
+  blockButton();
   closePopup(popupModalAdd);
 }
-
 
  function handleLike(event) {
   event.target.classList.toggle('elements__heart-logo_active');
@@ -128,7 +133,6 @@ function formSubmitAddCard(evt) {
 function likeEventListener(element) {
   element.querySelector('.elements__heart-logo').addEventListener('click', handleLike);
 }
-
 
 function handleDelete(event) {
   event.target.closest('.elements__element').remove();
@@ -156,16 +160,24 @@ function createCard({name, link}) {
   likeEventListener(cardElement);
 
   return cardElement;
-  }
+}
 
 editButton.addEventListener('click', handleEditPopup);
-addButton.addEventListener('click', () => openPopup(popupModalAdd));
+addButton.addEventListener('click', () => {
+  openPopup(popupModalAdd)
+  deleteErrors(formElementAddPlace, config);
+
+});
 
 closeEditPopup.addEventListener('click', () => closePopup(popupModalEdit));
 closeAddPopup.addEventListener('click', () => closePopup(popupModalAdd));
 
 formElementDescription.addEventListener('submit', formSubmitEditHandler);
 formElementAddPlace.addEventListener('submit', formSubmitAddCard);
+
+popupModalEdit.addEventListener('click', closePopupByClickOnOverlay);
+popupModalAdd.addEventListener('click', closePopupByClickOnOverlay);
+popupModalImage.addEventListener('click', closePopupByClickOnOverlay);
 
 closeImagePopup.addEventListener('click', () => closePopup(popupModalImage));
 
