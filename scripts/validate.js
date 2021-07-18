@@ -47,12 +47,12 @@ const checkInputValidity = (formElement, inputElement, config) => {
   }); 
   }
 
-  const SubmitButtonActive = (buttonElement, config) => {
+  const submitButtonActive = (buttonElement, config) => {
     buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.removeAttribute("disabled");
   }
 
-  const SubmitButtonInactive = (buttonElement, config) => {
+  const submitButtonInactive = (buttonElement, config) => {
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.setAttribute("disabled", true);
   }
@@ -61,10 +61,10 @@ const checkInputValidity = (formElement, inputElement, config) => {
   const toggleButtonState = (inputList, buttonElement, config) => {
 
   if (hasInvalidInput(inputList)) {
-    SubmitButtonInactive(buttonElement, config);
+    submitButtonInactive(buttonElement, config);
    
   } else { 
-    SubmitButtonActive(buttonElement, config);
+    submitButtonActive(buttonElement, config);
   } 
 }
 

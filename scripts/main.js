@@ -21,9 +21,6 @@ const addButton = document.querySelector('.profile__add-button');
 const nameTitle = document.querySelector('.profile__title');
 const jobTitle = document.querySelector('.profile__subtitle');
 
-const popupModal = document.querySelector('.popup');
-
-
 const popupModalEdit = document.querySelector('.popup_type_profile');
 const popupModalAdd = document.querySelector('.popup_type_add-card');
 const popupModalImage = document.querySelector('.popup_type_image');
@@ -33,6 +30,8 @@ const popupImageText = document.querySelector('.popup__image-title');
 
 const formElementDescription = document.querySelector('.popup__form-container_edit-description');
 const formElementAddPlace = document.querySelector('.popup__form-container_add-place');
+
+const addPlaceSubmitButton = formElementAddPlace.querySelector('.popup__submit-button');
 
 const nameInput = formElementDescription.querySelector('.popup__input_edit_name');
 const jobInput = formElementDescription.querySelector('.popup__input_edit_vocation');
@@ -91,8 +90,8 @@ function formSubmitEditHandler(evt) {
   
   evt.preventDefault();
 
-nameTitle.textContent = nameInput.value;
-jobTitle.textContent = jobInput.value;
+  nameTitle.textContent = nameInput.value;
+  jobTitle.textContent = jobInput.value;
 
 closePopup(popupModalEdit);
 }
@@ -106,12 +105,7 @@ function addCard(container, cardElement, isNewItem) {
   } 
  }
 
- function blockButton() {
-  let submitButton = document.querySelectorAll('.popup__submit-button')[1]
-  submitButton.setAttribute('disabled', true);
-  submitButton.classList.add('popup__submit-button_disabled');
-}
-
+ 
 function formSubmitAddCard(evt) {
   
   evt.preventDefault();
@@ -122,7 +116,8 @@ function formSubmitAddCard(evt) {
   addCard(cardElements, createCard({name, link}), true);
   formElementAddPlace.reset();
     
-  blockButton();
+  
+  submitButtonInactive(addPlaceSubmitButton, config);
   closePopup(popupModalAdd);
 }
 
