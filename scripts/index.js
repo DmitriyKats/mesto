@@ -1,3 +1,5 @@
+ import {Card} from './Card.js';
+ import { FormValidator, config} from './FormValidator.js';
 
 const initialCards = [
   { name: 'Архыз',
@@ -31,8 +33,6 @@ const popupImageText = document.querySelector('.popup__image-title');
 const formElementDescription = document.querySelector('.popup__form-container_edit-description');
 const formElementAddPlace = document.querySelector('.popup__form-container_add-place');
 
-const addPlaceSubmitButton = formElementAddPlace.querySelector('.popup__submit-button');
-
 const nameInput = formElementDescription.querySelector('.popup__input_edit_name');
 const jobInput = formElementDescription.querySelector('.popup__input_edit_vocation');
 
@@ -44,7 +44,7 @@ const closeAddPopup = document.querySelector('.popup_type_add-card .popup__close
 const closeImagePopup = document.querySelector('.popup_type_image .popup__close-button');
 
 const cardElements = document.querySelector('.elements');
-const cardElementTemplate = document.querySelector('.elements__template').content;
+
 
 function openPopup(popupName) {
   
@@ -83,7 +83,7 @@ function handleEditPopup() {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
 
-  deleteErrors(formElementDescription, config);
+  formEditValidator.deleteErrors(); 
 }
 
 function formSubmitEditHandler(evt) {
@@ -93,7 +93,7 @@ function formSubmitEditHandler(evt) {
   nameTitle.textContent = nameInput.value;
   jobTitle.textContent = jobInput.value;
 
-closePopup(popupModalEdit);
+  closePopup(popupModalEdit);
 }
 
 function addCard(container, cardElement, isNewItem) {
@@ -104,7 +104,6 @@ function addCard(container, cardElement, isNewItem) {
     container.append(cardElement); 
   } 
  }
-
  
 function formSubmitAddCard(evt) {
   
@@ -113,54 +112,22 @@ function formSubmitAddCard(evt) {
   const name = placeTitleInput.value; 
   const link = placeLinkInput.value;
 
-  addCard(cardElements, createCard({name, link}), true);
+  const cardInstance = new Card({name, link}, '.elements__template');
+  const cardElement = cardInstance.generateCard();
+
+  addCard(cardElements, cardElement, true);
   formElementAddPlace.reset();
     
   
-  submitButtonInactive(addPlaceSubmitButton, config);
+  formAddPlaceValidator.submitButtonInactive();
   closePopup(popupModalAdd);
 }
 
- function handleLike(event) {
-  event.target.classList.toggle('elements__heart-logo_active');
-}
-
-function likeEventListener(element) {
-  element.querySelector('.elements__heart-logo').addEventListener('click', handleLike);
-}
-
-function handleDelete(event) {
-  event.target.closest('.elements__element').remove();
-}
-
-function deleteEventListener(element) {
-  element.querySelector('.elements__trash').addEventListener('click', handleDelete);
-}
-
-
-function createCard({name, link}) {
-  const cardElement = cardElementTemplate.cloneNode(true);
-  cardElement.querySelector('.elements__title').textContent = name;
-  cardElement.querySelector('.elements__image').src = link;
-  cardElement.querySelector('.elements__image').alt = name;
-
-  cardElement.querySelector('.elements__image').addEventListener('click', function() {
-    popupImage.src = link;
-    popupImage.alt = name;
-    popupImageText.textContent = name;
-    openPopup(popupModalImage);
-  });
-
-  deleteEventListener(cardElement);
-  likeEventListener(cardElement);
-
-  return cardElement;
-}
 
 editButton.addEventListener('click', handleEditPopup);
 addButton.addEventListener('click', () => {
   openPopup(popupModalAdd)
-  deleteErrors(formElementAddPlace, config);
+  formAddPlaceValidator.deleteErrors();
 
 });
 
@@ -178,10 +145,20 @@ closeImagePopup.addEventListener('click', () => closePopup(popupModalImage));
 
 
 initialCards.forEach((card) => {
-  addCard(cardElements, createCard(card), false);
+  const cardInstance = new Card(card, '.elements__template');
+  const cardElement = cardInstance.generateCard();
+  addCard(cardElements, cardElement, false);
+  
 });
 
+const formEditValidator = new FormValidator(formElementDescription, config);
+formEditValidator.enableValidation();
 
+const formAddPlaceValidator = new FormValidator(formElementAddPlace, config);
+formAddPlaceValidator.enableValidation();
+
+
+ export {openPopup, closePopup, closePopupByClickOnEsc, popupImage, popupModalImage, popupImageText};
 
 
 
